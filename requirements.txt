@@ -1,0 +1,39 @@
+# CipherMesh Edge - runtime dependencies
+#
+# PyPI package name for the Reticulum Network Stack is "rns" (import name "RNS").
+# There is no package named "Reticulum" on PyPI.
+rns>=1.5,<1.6
+
+# Ed25519, SHA-256, PEM key handling.
+# Reticulum already depends on cryptography; we pin a compatible range.
+cryptography>=42.0,<47.0
+
+# Serial access for RNodeInterface radio probing.
+pyserial>=3.5
+
+# Local configuration file parsing.
+PyYAML>=6.0,<7.0
+
+# CPU / RAM / disk telemetry for the health monitor.
+psutil>=5.9
+
+# --- Optional extras -------------------------------------------------------
+#
+# cloud : HTTPS client for the Render/FastAPI backend.
+#         Install with:  pip install -r requirements.txt cloud
+httpx>=0.27,<1.0
+
+# --- GPIO (DHT22) ----------------------------------------------------------
+#
+# Bit-banging the DHT22 single-wire protocol needs a GPIO backend. The
+# installer resolves these at install time, in this order:
+#
+#   1. lgpio              (pip wheel; aarch64 wheels exist for cp39-cp312 ONLY)
+#   2. python3-lgpio      (apt, Raspberry Pi OS archive only; not in Debian)
+#   3. /dev/gpiochip0     (pure-python ioctl binding shipped with ciphermesh,
+#                          zero dependencies, always available on kernel >= 5.x)
+#
+# NOT listed as a hard dependency: "lgpio" has no cp313/cp314 wheel, so a
+# Raspberry Pi OS Trixie install would attempt a source build. ciphermesh
+# falls back to the pure-python gpiochip backend instead of failing.
+# See docs/sensor.md.
