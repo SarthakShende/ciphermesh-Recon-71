@@ -1,4 +1,4 @@
-# CipherMesh — Hardware-Rooted Decentralized IoT Trust Network
+# CipherMesh - Hardware-Rooted Decentralized IoT Trust Network
 
 > **SIH 2026 | Problem Statement 26211 | Blockchain & Cybersecurity**
 
@@ -12,9 +12,9 @@ The goal is simple:
 
 ## 1. Problem Statement
 
-### SIH 2026 — PS 26211
+### SIH 2026 - PS 26211
 
-**Student Innovation — Decentralized and Distributed Ledger Technology for Secure Digital Information and Multi-Sector Applications.**
+**Student Innovation - Decentralized and Distributed Ledger Technology for Secure Digital Information and Multi-Sector Applications.**
 
 CipherMesh applies decentralized ledger technology to a practical IoT security problem: establishing trustworthy device identity and verifiable event history in environments where devices may be remote, bandwidth-limited, intermittently connected, or exposed to physical tampering.
 
@@ -94,7 +94,7 @@ This makes the system useful for remote and disruption-prone IoT deployments.
 
 The current prototype uses **two Raspberry Pi 4B nodes**.
 
-## Pi A — Gateway + Temperature Sensor
+## Pi A - Gateway + Temperature Sensor
 
 Responsibilities:
 
@@ -107,7 +107,7 @@ Responsibilities:
 - Buffer events when cloud connectivity is unavailable
 - Synchronize with the backend when connectivity returns
 
-## Pi B — Receiver + Monitor
+## Pi B - Receiver + Monitor
 
 Responsibilities:
 
@@ -191,11 +191,11 @@ The web application is intended to run on **Vercel** and the FastAPI backend on 
 
 # 6. Main Trust Flow
 
-### Step 1 — Physical event
+### Step 1 - Physical event
 
 The temperature sensor produces a real measurement.
 
-### Step 2 — Event creation
+### Step 2 - Event creation
 
 Pi A creates a canonical event containing fields such as:
 
@@ -211,11 +211,11 @@ firmware_hash
 event_version
 ```
 
-### Step 3 — Cryptographic protection
+### Step 3 - Cryptographic protection
 
 The event is hashed using **SHA-256** and signed using **Ed25519**.
 
-### Step 4 — Offline-capable transport
+### Step 4 - Offline-capable transport
 
 The signed event is sent through:
 
@@ -227,7 +227,7 @@ LoRa
 
 No continuous Internet connection is required for Pi-to-Pi communication.
 
-### Step 5 — Verification
+### Step 5 - Verification
 
 Pi B checks:
 
@@ -239,19 +239,19 @@ Pi B checks:
 - Duplicate/replay status
 - Device revocation state
 
-### Step 6 — Trust analysis
+### Step 6 - Trust analysis
 
 Verified events contribute to the device trust state.
 
 Behavioural analysis can identify unusual activity.
 
-### Step 7 — Cloud synchronization
+### Step 7 - Cloud synchronization
 
 When Internet is available, verified events and security events are synchronized with the FastAPI backend.
 
 When Internet is unavailable, events remain in the local queue.
 
-### Step 8 — DLT evidence
+### Step 8 - DLT evidence
 
 Important security evidence can be selectively anchored to the distributed ledger.
 
@@ -433,23 +433,23 @@ For the MVP, explainable rules, statistical baselines, or lightweight anomaly de
 
 # 11. Software Stack
 
-| Layer | Technology |
-|---|---|
-| Edge hardware | Raspberry Pi 4B |
-| Sensor | Temperature sensor |
-| Radio | LoRa |
-| Networking | Reticulum Network Stack |
-| Event hashing | SHA-256 |
-| Event signing | Ed25519 |
-| Edge storage | SQLite |
-| Backend | Python + FastAPI |
-| Authentication | Supabase Auth |
-| Cloud database | Supabase PostgreSQL |
-| AI | Explainable anomaly detection |
-| DLT | Adapter-based EVM/permissioned design |
-| Frontend | Next.js + TypeScript + Tailwind CSS |
-| Frontend hosting | Vercel |
-| Backend hosting | Render |
+| Layer                   | Technology                            |
+|-------------------------|---------------------------------------|
+| Edge hardware           | Raspberry Pi 4B                       |
+| Sensor                  | Temperature sensor                    |
+| Radio                   | LoRa                                  |
+| Networking              | Reticulum Network Stack               |
+| Event hashing           | SHA-256                               |
+| Event signing           | Ed25519                               |
+| Edge storage            | SQLite                                |
+| Backend                 | Python + FastAPI                      |
+| Authentication          | Supabase Auth                         |
+| Cloud database          | Supabase PostgreSQL                   | 
+| AI                      | Explainable anomaly detection         |
+| DLT                     | Adapter-based EVM/permissioned design |
+| Frontend                | Next.js + TypeScript + Tailwind CSS   |
+| Frontend hosting        | Vercel                                |
+| Backend hosting         | Render                                |
 
 ---
 
@@ -509,7 +509,7 @@ The recommended judge flow is:
 10. Run the demo
 ```
 
-## Step 1 — Clone
+## Step 1 - Clone
 
 ```bash
 git clone <REPOSITORY_URL>
@@ -913,16 +913,16 @@ Open the DLT Evidence page and show the evidence/transaction reference.
 
 # 20. Challenges and Mitigations
 
-| Challenge | Mitigation |
-|---|---|
-| Bandwidth | Compact packets + local filtering |
-| Connectivity | Local verification + buffered sync |
+| Challenge         | Mitigation                                                 |
+|-------------------|------------------------------------------------------------|
+| Bandwidth         | Compact packets + local filtering                          |
+| Connectivity      | Local verification + buffered sync                         |
 | Device compromise | Secure Boot + signed firmware + hardware keys + revocation |
-| Replay attacks | Sequence + freshness checks |
-| AI errors | Explainable AI; cryptography remains authoritative |
-| Power usage | Optimize event frequency + measure energy/event |
-| Integration | Validate Reticulum + LoRa with a multi-node prototype |
-| DLT choice | Finalize EVM vs permissioned DLT during architecture phase |
+| Replay attacks    | Sequence + freshness checks                                |
+| AI errors         | Explainable AI; cryptography remains authoritative         |
+| Power usage       | Optimize event frequency + measure energy/event            |
+| Integration       | Validate Reticulum + LoRa with a multi-node prototype      |
+| DLT choice        | Finalize EVM vs permissioned DLT during architecture phase |
 
 ---
 
@@ -985,34 +985,7 @@ CipherMesh can later support:
 
 ---
 
-# 24. Project Status
-
-### Current MVP target
-
-```text
-[x] Next.js dashboard
-[x] Supabase integration foundation
-[x] FastAPI architecture
-[x] Raspberry Pi 4B edge architecture
-[x] Two-node deployment model
-[x] Reticulum + LoRa architecture
-[x] Signed event architecture
-[x] Offline-first design
-[x] Replay protection design
-[x] AI/trust architecture
-[x] DLT evidence architecture
-[ ] Final LoRa hardware-specific integration
-[ ] Full Pi-to-Pi hardware validation
-[ ] Full cloud deployment
-[ ] Final DLT selection
-[ ] End-to-end SIH demo validation
-```
-
-Only mark an item `[x]` in the real repository when it has actually been implemented and tested.
-
----
-
-# 25. Documentation
+# 24. Documentation
 
 ### Hardware / Raspberry Pi
 
@@ -1058,7 +1031,7 @@ Next.js Dashboard
 
 ---
 
-# 26. Quick Troubleshooting
+# 25. Quick Troubleshooting
 
 ## Pi service is not running
 
@@ -1110,7 +1083,7 @@ For installation and hardware-specific issues, see:
 
 ---
 
-# 27. Repository Safety
+# 26. Repository Safety
 
 Never commit:
 
@@ -1135,13 +1108,13 @@ for configuration templates.
 
 ---
 
-# 28. One-Line Project Explanation
+# 27. One-Line Project Explanation
 
 > **CipherMesh is a hardware-rooted, offline-capable IoT trust network that signs physical sensor events, verifies them over Reticulum + LoRa, detects abnormal behaviour, and preserves important security evidence on a distributed ledger.**
 
 ---
 
-# 29. Final Architecture Summary
+# 28. Final Architecture Summary
 
 ```text
                  CIPHER MESH
